@@ -18,12 +18,14 @@ int fastlog(const char* msg) {
       return -1;
   }
 
+  int ret = -1;
   int fd = open(logname, O_CREAT | O_RDWR | O_APPEND);
   size_t msg_sz = strlen(msg);
   if (-1 == fd)
     return -1;
-  if (1 > write(fd, msg, msg_sz))
-    return -1;
+  if (1 < write(fd, msg, msg_sz))
+    ret = 0;
+  close(fd);
 
-  return 0;
+  return ret;
 }
