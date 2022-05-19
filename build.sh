@@ -1,5 +1,5 @@
 #!/bin/bash
 
-seq=1
+seq=2
 
-gcc -I include_$seq main.c -o fastlog -lm
+gcc -O0 -g -I include_$seq main.c -o fastlog -lm
